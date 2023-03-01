@@ -14,7 +14,7 @@
 	<name>04.BackendDemoApp</name>
 	<description>Backend for BTP using CAPM</description>
 	<properties>
-		<java.version>17</java.version>
+		<java.version>11</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
