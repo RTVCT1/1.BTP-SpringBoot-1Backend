@@ -30,10 +30,10 @@ public class VendorController {
 	}
 	
 	@RequestMapping("/vendor/{vendorCode}")
-	public Vendor getVendorById(@PathVariable("vendorCode") Long code) {
+	public Vendor getVendorById(@PathVariable("vendorCode") String code) {
 		Optional<Vendor> searchResult = vendorService.getSingleVendor(code);
 		if(!searchResult.isPresent()) {
-			return new Vendor((long)0,"","","","","","",null );
+			return new Vendor((String)"","","","","","","",null );
 		}
 		return searchResult.get();
 	}
@@ -62,7 +62,7 @@ public class VendorController {
 	
 	
 	@RequestMapping(method=RequestMethod.DELETE, value="/vendor/{id}")
-	public String removeVendor(@PathVariable("id") Long id) {
+	public String removeVendor(@PathVariable("id") String id) {
 		return vendorService.deleteVendor(id);
 	}
 

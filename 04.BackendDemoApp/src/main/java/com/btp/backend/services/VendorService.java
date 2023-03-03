@@ -41,7 +41,7 @@ public class VendorService {
 		return vendor.lookupVendorByGST(GSTNo);
 	}
 	
-	public Optional<Vendor> getSingleVendor(Long id) {
+	public Optional<Vendor> getSingleVendor(String id) {
 		return vendor.findById(id);
 	}
 
@@ -49,12 +49,12 @@ public class VendorService {
 		// TODO Auto-generated method stub
 		Optional<Vendor> myVendor = vendor.findById(payload.id );
 		if(!myVendor.isPresent()) {
-			return new Vendor((long)0,"","","","","","",null );
+			return new Vendor((String)"","","","","","","",null );
 		}
 		return vendor.save(payload);
 	}
 	
-	public String deleteVendor(Long id) {
+	public String deleteVendor(String id) {
 		vendor.deleteById(id);
 		return "deleted successfully";
 	}

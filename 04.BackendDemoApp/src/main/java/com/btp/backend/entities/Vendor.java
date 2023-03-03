@@ -4,6 +4,8 @@ package com.btp.backend.entities;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -22,8 +24,9 @@ public class Vendor {
 	
 	@Id
 	@Column(nullable=false, name="ID")
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	public Long id;
+	@GeneratedValue(generator="uuid2")
+	@GenericGenerator(name="uuid2",strategy="org.hibernate.id.UUIDGenerator" )
+	public String id;
 	
 	@Column(nullable=false, name="COMPANY_NAME")
 	public String companyName;
@@ -54,7 +57,7 @@ public class Vendor {
 		
 	}
 	
-	public Vendor(Long id, String companyName, String firstName, String lastName, String website, String email,
+	public Vendor(String id, String companyName, String firstName, String lastName, String website, String email,
 			String status, String gstNo) {
 		super();
 		this.id = id;
@@ -67,11 +70,11 @@ public class Vendor {
 		this.gstNo = gstNo;
 	}
 		
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

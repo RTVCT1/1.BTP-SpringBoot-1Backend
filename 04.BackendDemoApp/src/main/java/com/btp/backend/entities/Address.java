@@ -1,5 +1,7 @@
 package com.btp.backend.entities;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,9 +14,10 @@ import jakarta.persistence.Table;
 public class Address {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(generator="uuid2")
+	@GenericGenerator(name="uuid2",strategy="org.hibernate.id.UUIDGenerator" )
 	@Column(nullable=false, name="ID")
-	private Long addressId;
+	private String addressId;
 	
 	@Column(nullable=false, name="TYPE")
 	private String addressType;
@@ -35,7 +38,7 @@ public class Address {
 		
 	}
 	
-	public Address(Long addressId, String addressType, String street, String city, String country, String region) {
+	public Address(String addressId, String addressType, String street, String city, String country, String region) {
 		super();
 		this.addressId = addressId;
 		this.addressType = addressType;
@@ -45,11 +48,11 @@ public class Address {
 		this.region = region;
 	}
 
-	public Long getAddressId() {
+	public String getAddressId() {
 		return addressId;
 	}
 
-	public void setAddressId(Long addressId) {
+	public void setAddressId(String addressId) {
 		this.addressId = addressId;
 	}
 
